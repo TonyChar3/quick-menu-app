@@ -1,9 +1,18 @@
 "use client";
 import { useState } from "react";
-import { ChevronsRight, ChevronsLeft } from "lucide-react";
-import { getNavItems } from "../../utils/NavItems";
+import {
+  ChevronsRight,
+  ChevronsLeft,
+  House,
+  BookCopy,
+  Utensils,
+  Users,
+  ChartNoAxesCombined,
+  Cog,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getNavItems } from "../../utils/NavItems";
 
 export default function AuthenticatedLayout({ children }) {
   const active_path = usePathname();
@@ -13,29 +22,22 @@ export default function AuthenticatedLayout({ children }) {
   // get nav items for the navbar
   const navItems = getNavItems(navbar_state);
 
-  // to open <=> close the navbar
-  const toggleNavbar = () => {
-    setNavbarState((navbar_state) => !navbar_state);
-  };
-
   return (
     <div className="flex flex-row h-full w-full">
       <nav
-        className={`fixed z-50 left-0 top-0 md:left-auto md:top-auto md:z-0 md:relative ${
+        className={`fixed md:relative ${
           navbar_state ? "w-64" : "w-10 md:w-20"
-        } bg-white ${
-          navbar_state ? "h-full" : "h-10 md:h-full"
-        } py-4 px-2 flex flex-col justify-center items-center rounded-e-lg shadow-sm md:shadow-lg shadow-gray-400 transform-all ease duration-300`}
+        } h-full bg-white py-4 px-2 flex flex-col justify-center items-center rounded-e-lg shadow-lg transition-all duration-300`}
       >
         <div
           className={`absolute top-2 w-full text-center text-white ${
             navbar_state ? "" : "hidden"
-          } transform-all ease duration-300`}
+          } transition-all ease duration-300`}
         >
           <h1 className="font-bold text-sm text-black">MenuMaker.io</h1>
         </div>
         <div
-          onClick={() => toggleNavbar()}
+          onClick={() => setNavbarState(!navbar_state)}
           className={`absolute top-1 text-white ${
             navbar_state ? "right-2" : "text-2xl"
           }`}
@@ -70,9 +72,11 @@ export default function AuthenticatedLayout({ children }) {
                 <li className="flex items-center">
                   {active_path === item.path ? item.icon_active : item.icon}
                   <span
-                    className={`ms-4 ${navbar_state ? "" : "hidden"} ${
+                    className={`ms-4 ${
                       active_path === item.path ? "text-black" : "text-gray-500"
-                    } transform-all ease duration-300`}
+                    } ${
+                      navbar_state ? "" : "hidden"
+                    }  transition-all ease duration-300`}
                   >
                     {item.label}
                   </span>

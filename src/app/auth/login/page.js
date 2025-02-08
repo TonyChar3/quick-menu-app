@@ -3,9 +3,9 @@ import { useState } from "react";
 import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
+import PrimaryButton from "@/components/MainButton";
 import TextInput from "@/Components/TextInput";
-import GuestLayout from "@/Layouts/GuestLayout";
+import GuestLayout from "@/layouts/GuestLayout";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 
@@ -36,7 +36,6 @@ export default function Login({ status, canResetPassword }) {
               id="email"
               type="email"
               name="email"
-              value=""
               className="mt-1 block w-full placeholder:font-light placeholder:text-sm"
               autoComplete="username"
               isFocused={true}
@@ -54,7 +53,6 @@ export default function Login({ status, canResetPassword }) {
                 id="password"
                 type={toggle_password ? "text" : "password"}
                 name="password"
-                value=""
                 className="mt-1 block w-full placeholder:font-light placeholder:text-sm"
                 autoComplete="current-password"
                 placeholder="Enter your password"
@@ -73,7 +71,7 @@ export default function Login({ status, canResetPassword }) {
 
           <div className="mt-4 flex flex-row justify-between items-center">
             <label className="flex items-center">
-              <Checkbox name="remember" checked="" />
+              <Checkbox name="remember" />
               <span className="ms-2 text-sm text-gray-600">Remember me</span>
             </label>
             {canResetPassword && (

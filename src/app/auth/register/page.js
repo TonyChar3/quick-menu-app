@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
+import PrimaryButton from "@/components/MainButton";
 import TextInput from "@/Components/TextInput";
-import GuestLayout from "@/Layouts/GuestLayout";
+import GuestLayout from "@/layouts/GuestLayout";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
